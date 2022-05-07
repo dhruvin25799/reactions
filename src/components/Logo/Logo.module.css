@@ -1,0 +1,19 @@
+.logo {
+  display: flex;
+  flex-flow: column;
+  gap: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo h1 {
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  font-weight: 600;
+  color: var(--COLOR-brand);
+  font-family: var(--FONT-brand);
+}
+
+.logo p{
+    margin: -10px;
+}

@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap");
+html {
+  height: 100%;
+  overflow: auto;
+}
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+*,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --FONT-brand: "Kaushan Script", cursive;
+  --COLOR-bg: #fafafa;
+  --COLOR-secondary-bg: white;
+  --COLOR-text: black;
+  --COLOR-border: rgba(128, 128, 128, 0.3);
+  --COLOR-btn-primary: #028aff;
+  --COLOR-btn-primary-hover: #ff7702;
+}
+
+[data-theme="dark"] {
+  --COLOR-bg: #121212;
+  --COLOR-secondary-bg: black;
+  --COLOR-text: white;
+  --COLOR-border: rgba(128, 128, 128, 0.7);
+  --COLOR-btn-primary: #d300c5;
+  --COLOR-btn-primary-hover: #ff7702;
+}

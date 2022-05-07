@@ -1,0 +1,8 @@
+.App {
+  background-color: var(--COLOR-bg);
+  color: var(--COLOR-text);
+  min-height: 100vh;
+  max-width: 100vw;
+  transition: all 0.5s;
+  position: relative;
+}
