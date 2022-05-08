@@ -1,8 +1,8 @@
 import React from "react";
-import { useAuth } from "../../context/auth-context";
 import { Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export const RequiresAuth = ({ children }) => {
-  const { authState } = useAuth();
-  return authState ? children : <Navigate to="/login" replace />;
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  return isLoggedIn ? children : <Navigate to="/login" replace />;
 };

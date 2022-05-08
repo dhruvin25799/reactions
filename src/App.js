@@ -1,14 +1,14 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import { useTheme } from "./context/theme-context";
-import {Home} from "./pages/Home/Home"
+import { Home } from "./pages/Home/Home";
 import { NavBar } from "./components/NavBar/NavBar";
 import { RequiresAuth } from "./components/RequiresAuth/RequiresAuth";
 import { Login } from "./pages/Login/Login";
 import { SignUp } from "./pages/SignUp/SignUp";
+import { useSelector } from "react-redux";
 
 function App() {
-  const {isDark} = useTheme();
+  const isDark = useSelector((state) => state.theme.isDark);
   return (
     <>
       <div className="App" data-theme={isDark && "dark"}>
@@ -22,8 +22,8 @@ function App() {
               </RequiresAuth>
             }
           />
-          <Route path="/login" element={<Login/>}/>
-          <Route path="/signup" element={<SignUp/>}/>
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
         </Routes>
       </div>
     </>

@@ -2,11 +2,13 @@ import React from "react";
 import styles from "./NavBar.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
-import { useTheme } from "../../context/theme-context";
 import { Logo } from "../Logo/Logo";
+import { useSelector, useDispatch } from "react-redux";
+import { themeActions } from "../../store/theme-slice";
 
 export const NavBar = () => {
-  const { isDark, setIsDark } = useTheme();
+  const isDark = useSelector((state) => state.theme.isDark);
+  const dispatch = useDispatch();
   return (
     <>
       <nav className={styles["nav"]}>
@@ -21,7 +23,7 @@ export const NavBar = () => {
             <FontAwesomeIcon
               icon={isDark ? faSun : faMoon}
               size="2x"
-              onClick={() => setIsDark(!isDark)}
+              onClick={() => dispatch(themeActions.toggle())}
             />
           </li>
           <li>Login</li>
