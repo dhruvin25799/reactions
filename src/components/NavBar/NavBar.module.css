@@ -9,8 +9,28 @@
   border-bottom: 1px solid var(--COLOR-border);
 }
 
-.nav-brand {
+.nav-search{
+  position: relative;
+}
 
+.nav-search input{
+  border: 1px solid var(--COLOR-border);
+  border-radius: 5px;
+  outline: none;
+  background-color: var(--COLOR-secondary-bg);
+  color: var(--COLOR-text);
+  padding: 10px 30px;
+}
+
+.nav-search label{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
 }
 
 .nav-links {

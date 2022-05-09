@@ -1,0 +1,33 @@
+.home-main {
+  display: flex;
+  padding: 2rem 0;
+  flex-flow: row;
+  gap: 2rem;
+  width: 100%;
+}
+
+.home-content {
+  display: flex;
+  flex-flow: column;
+  gap: 1rem;
+  margin-left: 10rem;
+  width: 60%;
+}
+
+.carousel-container {
+  border: 1px solid var(--COLOR-border);
+  padding: 2rem;
+  background-color: var(--COLOR-secondary-bg);
+  overflow-x: scroll;
+}
+
+.post-container {
+  
+}
+
+.home-profile {
+  padding: 2rem 0;
+  position: relative;
+}
+
+

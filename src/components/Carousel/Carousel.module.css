@@ -1,0 +1,44 @@
+.carousel-container {
+  border: 1px solid var(--COLOR-border);
+  background-color: var(--COLOR-secondary-bg);
+}
+
+.carousel{
+  position: relative;
+}
+
+.carousel-row{
+  overflow-x: scroll;
+  display: flex;
+  flex-flow: row;
+  gap: 1.5rem;
+  padding: 2rem 1rem;
+}
+
+.carousel-row::-webkit-scrollbar {
+  display: none;
+}
+
+.left-arrow{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: max-content;
+  padding: 10px;
+}
+
+.right-arrow{
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: max-content;
+  padding: 10px;
+}

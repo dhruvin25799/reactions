@@ -1,0 +1,12 @@
+.avatar-icon{
+    width: 100%;
+    height: auto;
+    background-color: var(--COLOR-btn-primary);
+    border-radius: 50%;
+    border: 3px solid var(--COLOR-btn-primary-hover);
+}
+
+.avatar-icon:hover{
+    background-color: var(--COLOR-btn-primary-hover);
+    border-color: var(--COLOR-btn-primary);
+}
