@@ -1,11 +1,7 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import { Home } from "./pages/Home/Home";
-import { NavBar } from "./components/NavBar/NavBar";
-import { RequiresAuth } from "./components/RequiresAuth/RequiresAuth";
-import { Login } from "./pages/Login/Login";
-import { SignUp } from "./pages/SignUp/SignUp";
-import { Profile } from "./pages/Profile/Profile";
+import { Home, Login, SignUp, Profile } from "./pages/index";
+import { NavBar, RequiresAuth } from "./components/index";
 import { useSelector } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
