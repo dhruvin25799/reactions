@@ -13,6 +13,7 @@
   flex-flow: row;
   gap: 1.5rem;
   padding: 2rem 1rem;
+  justify-content: center;
 }
 
 .carousel-row::-webkit-scrollbar {
@@ -29,6 +30,7 @@
   align-items: center;
   width: max-content;
   padding: 10px;
+  cursor: pointer;
 }
 
 .right-arrow{
@@ -41,4 +43,5 @@
   align-items: center;
   width: max-content;
   padding: 10px;
+  cursor: pointer;
 }

@@ -1,8 +1,7 @@
 import React, { useReducer, useEffect } from "react";
 import styles from "./SignUp.module.css";
 import { Link, useNavigate } from "react-router-dom";
-import { Button } from "../../components/Button/Button";
-import { Logo } from "../../components/Logo/Logo";
+import { Button, Logo } from "../../components/index";
 import { useDispatch } from "react-redux";
 import { signUpUser } from "../../store/auth-slice";
 import {

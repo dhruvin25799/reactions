@@ -1,14 +1,17 @@
 import React from "react";
-import { AvatarIcon } from "../AvatarIcon/AvatarIcon";
+import {AvatarIcon} from "../index";
 import styles from "./Avatar.module.css";
+import { Link } from "react-router-dom";
 
 export const Avatar = (props) => {
   return (
     <>
-      <div className={styles["avatar-container"]}>
-        <AvatarIcon/>
-        <p>Dhruvin</p>
-      </div>
+      <Link to={"/profile/" + props.username}>
+        <div className={styles["avatar-container"]}>
+          <AvatarIcon />
+          <p>{props.username}</p>
+        </div>
+      </Link>
     </>
   );
 };

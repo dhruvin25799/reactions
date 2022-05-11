@@ -1,0 +1,56 @@
+.profile-main {
+  display: flex;
+  flex-flow: column;
+  padding: 2rem;
+  gap: 2rem;
+}
+
+.centered{
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-header {
+  display: flex;
+  flex-flow: column;
+  margin-left: 10rem;
+}
+
+.profile-info {
+  display: flex;
+  flex-flow: row;
+  gap: 5rem;
+}
+
+.profile-data {
+  padding: 1rem 0;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+}
+
+.profile-icon {
+  width: 150px;
+  height: 150px;
+}
+
+.profile-stats {
+  display: flex;
+  flex-flow: row;
+  gap: 2rem;
+}
+
+hr {
+  border: none;
+  border-bottom: 2px solid var(--COLOR-border);
+}
+
+.profile-posts {
+  padding: 0 15rem;
+}
+
+.profile-data div:first-of-type{
+  display: flex;
+  flex-flow: row;
+  gap: 3rem;
+}

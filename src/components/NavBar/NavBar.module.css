@@ -7,6 +7,11 @@
   background-color: var(--COLOR-secondary-bg);
   color: var(--COLOR-text);
   border-bottom: 1px solid var(--COLOR-border);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
 }
 
 .nav-search{
@@ -40,13 +45,17 @@
   gap: 1rem;
 }
 
-.nav-links li a {
+.nav-cta li a {
   text-decoration: none;
   color: var(--COLOR-text);
 }
 
+.nav-cta li a:hover{
+  color: var(--COLOR-btn-primary-hover);
+}
+
 a[class="active"] {
-  color: red !important;
+  color: var(--COLOR-btn-primary) !important;
 }
 
 .nav-cta {
@@ -58,4 +67,3 @@ a[class="active"] {
   gap: 1rem;
   cursor: pointer;
 }
-

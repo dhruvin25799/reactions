@@ -1,15 +1,14 @@
 import React from "react";
-import { Post } from "../Post/Post";
+import { Post } from "../index";
+import styles from "./PostList.module.css";
 
-export const PostList = () => {
+export const PostList = (props) => {
   return (
     <>
-      <div>
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
+      <div className={styles["post-container"]}>
+        {props.posts.map((post) => (
+          <Post key={post._id} data={post} />
+        ))}
       </div>
     </>
   );

@@ -6,3 +6,7 @@
   transition: all 0.5s;
   position: relative;
 }
+
+.main{
+  margin-top: 4rem;
+}

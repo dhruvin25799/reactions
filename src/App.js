@@ -5,6 +5,7 @@ import { NavBar } from "./components/NavBar/NavBar";
 import { RequiresAuth } from "./components/RequiresAuth/RequiresAuth";
 import { Login } from "./pages/Login/Login";
 import { SignUp } from "./pages/SignUp/SignUp";
+import { Profile } from "./pages/Profile/Profile";
 import { useSelector } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -14,20 +15,30 @@ function App() {
   return (
     <>
       <div className="App" data-theme={isDark && "dark"}>
-        <ToastContainer />
+        <ToastContainer theme={isDark ? "dark" : "light"} />
         <NavBar />
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <RequiresAuth>
-                <Home />
-              </RequiresAuth>
-            }
-          />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-        </Routes>
+        <div className="main">
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <RequiresAuth>
+                  <Home />
+                </RequiresAuth>
+              }
+            />
+            <Route
+              path="/profile/:userID"
+              element={
+                <RequiresAuth>
+                  <Profile />
+                </RequiresAuth>
+              }
+            />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
+          </Routes>
+        </div>
       </div>
     </>
   );

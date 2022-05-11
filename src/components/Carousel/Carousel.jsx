@@ -1,13 +1,13 @@
-import React, {useState, useRef} from "react";
+import React, { useState, useRef } from "react";
 import styles from "./Carousel.module.css";
-import { Avatar } from "../Avatar/Avatar";
+import {Avatar} from "../index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowAltCircleLeft,
   faArrowAltCircleRight,
 } from "@fortawesome/free-regular-svg-icons";
 
-export const Carousel = () => {
+export const Carousel = (props) => {
   const [showLeft, setShowLeft] = useState(false);
   const carouselRef = useRef();
   const carouselScrollHandler = (arrow) => {
@@ -38,20 +38,9 @@ export const Carousel = () => {
                 onClick={() => carouselScrollHandler("right")}
               />
             </div>
-            <Avatar />
-            <Avatar />
-            <Avatar />
-            <Avatar />
-            <Avatar />
-            <Avatar />
-            <Avatar />
-            <Avatar />
-            <Avatar />
-            <Avatar />
-            <Avatar />
-            <Avatar />
-            <Avatar />
-            <Avatar />
+            {props.userList.map((user) => (
+              <Avatar key={user._id} username={user.username} />
+            ))}
           </div>
         </div>
       </div>
