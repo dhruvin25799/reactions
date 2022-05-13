@@ -1,0 +1,106 @@
+.backdrop {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  background-color: var(--COLOR-backdrop-bg);
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 30%;
+  margin-top: 10rem;
+  height: max-content;
+  z-index: 10;
+  background-color: var(--COLOR-modal-bg);
+  display: flex;
+  flex-flow: column;
+  border-radius: 10px;
+  padding: 1rem 2rem;
+  width: 30%;
+}
+
+hr {
+  margin: 10px -2rem;
+}
+
+.modal-header {
+  text-align: center;
+  position: relative;
+}
+
+.modal-header svg{
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+.modal-header svg:hover{
+  color: var(--COLOR-btn-primary-hover);
+}
+
+.modal-form {
+  display: flex;
+  flex-flow: column;
+  gap: 10px;
+}
+
+.input-control {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.input-control input {
+  border: 1px solid var(--COLOR-border);
+  outline: none;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: var(--COLOR-bg);
+  color: var(--COLOR-text);
+  width: 60%;
+}
+
+.input-control-textarea {
+  position: relative;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input-control-textarea textarea {
+  border: 1px solid var(--COLOR-border);
+  outline: none;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: var(--COLOR-bg);
+  color: var(--COLOR-text);
+  width: 60%;
+}
+
+.char-count {
+  width: 8vmin;
+  height: 8vmin;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+circle {
+  fill: none;
+  stroke-width: 5;
+}
+
+#gray {
+  stroke: var(--COLOR-btn-primary);
+}
+
+#colored {
+  stroke: var(--COLOR-btn-primary-hover);
+}

@@ -6,9 +6,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquarePlus } from "@fortawesome/free-regular-svg-icons";
 import { faUsers, faUserCheck } from "@fortawesome/free-solid-svg-icons";
 import { useSelector } from "react-redux";
+import { modalActions } from "../../store/modal-slice";
+import { useDispatch } from "react-redux";
 
 export const ProfileSidebar = () => {
-  const userData = useSelector(state => state.auth.userData);
+  const dispatch = useDispatch();
+  const userData = useSelector((state) => state.auth.userData);
   return (
     <>
       <div className={styles["profile-fixed"]}>
@@ -27,7 +30,7 @@ export const ProfileSidebar = () => {
         </Link>
         <ul className={styles["profile-cta"]}>
           <li>
-            <Button>
+            <Button onClick={() => dispatch(modalActions.toggle())}>
               <FontAwesomeIcon icon={faSquarePlus} />
               Create Post
             </Button>

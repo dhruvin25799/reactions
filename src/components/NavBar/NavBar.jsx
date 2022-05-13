@@ -8,16 +8,19 @@ import {
   faHome,
 } from "@fortawesome/free-solid-svg-icons";
 import { faUser, faSquarePlus } from "@fortawesome/free-regular-svg-icons";
+import { faSquarePlus as faSqaurePlusSolid } from "@fortawesome/free-solid-svg-icons";
 import { Logo, Button } from "../index";
 import { useSelector, useDispatch } from "react-redux";
 import { themeActions } from "../../store/theme-slice";
 import { authActions } from "../../store/auth-slice";
 import { Link, NavLink } from "react-router-dom";
+import { modalActions } from "../../store/modal-slice";
 
 export const NavBar = () => {
   const isDark = useSelector((state) => state.theme.isDark);
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
-  const username = useSelector(state => state.auth.userData.username);
+  const username = useSelector((state) => state.auth.userData.username);
+  const showModal = useSelector((state) => state.modal.showModal);
   const dispatch = useDispatch();
   return (
     <>
@@ -55,8 +58,11 @@ export const NavBar = () => {
               <FontAwesomeIcon icon={faUser} size="lg" />
             </NavLink>
           </li>
-          <li>
-            <FontAwesomeIcon icon={faSquarePlus} size="lg" />
+          <li onClick={() => dispatch(modalActions.toggle())}>
+            <FontAwesomeIcon
+              icon={showModal ? faSqaurePlusSolid : faSquarePlus}
+              size="lg"
+            />
           </li>
           <li>
             <NavLink to="/">

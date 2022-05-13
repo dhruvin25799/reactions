@@ -7,5 +7,6 @@ export { Logo } from "./Logo/Logo";
 export { NavBar } from "./NavBar/NavBar";
 export { Post } from "./Post/Post";
 export { PostList } from "./PostList/PostList";
+export { PostModal } from "./PostModal/PostModal";
 export { ProfileSidebar } from "./ProfileSidebar/ProfileSidebar";
 export { RequiresAuth } from "./RequiresAuth/RequiresAuth";

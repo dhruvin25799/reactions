@@ -21,6 +21,9 @@ body {
   --COLOR-border: rgba(128, 128, 128, 0.3);
   --COLOR-btn-primary: #028aff;
   --COLOR-btn-primary-hover: #ff7702;
+  --COLOR-backdrop-bg: rgba(0, 0, 0, 0.85);
+  --COLOR-modal-bg: white;
+  --COLOR-blue: #028aff;
 }
 
 [data-theme="dark"] {
@@ -30,4 +33,5 @@ body {
   --COLOR-border: rgba(128, 128, 128, 0.7);
   --COLOR-btn-primary: #d300c5;
   --COLOR-btn-primary-hover: #ff7702;
+  --COLOR-modal-bg: #262626;
 }
