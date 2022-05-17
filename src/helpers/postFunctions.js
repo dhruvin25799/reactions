@@ -64,3 +64,18 @@ export const removeBookmarkPost = async (postId, token) => {
   );
   return response.data;
 };
+
+export const addComment = async (postId, token, comment) => {
+  const response = await axios.post(
+    "/api/comments/add/" + postId,
+    {
+      commentData: { text: comment },
+    },
+    {
+      headers: {
+        authorization: token,
+      },
+    }
+  );
+  return response.data;
+};

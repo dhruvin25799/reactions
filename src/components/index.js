@@ -2,6 +2,7 @@ export { Avatar } from "./Avatar/Avatar";
 export { AvatarIcon } from "./AvatarIcon/AvatarIcon";
 export { Button } from "./Button/Button";
 export { Carousel } from "./Carousel/Carousel";
+export { CommentsList } from "./CommentsList/CommentsList";
 export { LoadingSpinner } from "./LoadingSpinner/LoadingSpinner";
 export { Logo } from "./Logo/Logo";
 export { NavBar } from "./NavBar/NavBar";

@@ -1,0 +1,37 @@
+.post-comments {
+  display: flex;
+  flex-flow: column;
+}
+
+.hide-comments{
+  opacity: 0.5;
+  width: fit-content;
+  cursor: pointer;
+}
+
+.comment {
+  display: flex;
+  flex-flow: row;
+  gap: 10px;
+}
+
+.comment p:first-of-type {
+  font-weight: 900;
+}
+
+.comment-input form{
+  border-top: 1px solid var(--COLOR-border);
+  padding-top: 5px;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.comment-input input{
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: var(--COLOR-secondary-bg);
+  color: var(--COLOR-text);
+}

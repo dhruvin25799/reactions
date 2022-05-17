@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from "react";
+import React, { useReducer } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./PostModal.module.css";
 import { modalActions, sendPost } from "../../store/modal-slice";
@@ -6,6 +6,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "../index";
 import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
+import {
+  modalInputReducer,
+  initialModalInputState,
+} from "../../reducers/modalReducer";
 
 const Backdrop = () => {
   const dispatch = useDispatch();
@@ -15,40 +19,6 @@ const Backdrop = () => {
       onClick={() => dispatch(modalActions.toggle())}
     ></div>
   );
-};
-
-const styleRing = (charLength) => {
-  const r = 15;
-  const circleLength = 2 * Math.PI * r;
-  let colored = (circleLength * charLength) / 50;
-  let gray = circleLength - colored > 0 ? circleLength - colored : 0;
-  return { colored, gray };
-};
-
-const modalInputReducer = (state, action) => {
-  switch (action.type) {
-    case "URL": {
-      return { ...state, url: action.payload };
-    }
-    case "CAPTION": {
-      const { colored, gray } = styleRing(action.payload.length);
-      return {
-        ...state,
-        caption: action.payload,
-        charLength: action.payload.length,
-        strokeDashArray: `${colored} ${gray}`,
-      };
-    }
-    default:
-      return state;
-  }
-};
-
-const initialModalInputState = {
-  url: "",
-  caption: "",
-  charLength: 0,
-  strokeDashArray: "",
 };
 
 export const PostModal = () => {
@@ -123,7 +93,6 @@ export const PostModal = () => {
                     cy="50%"
                     r="15"
                     strokeDasharray={modalInputState.strokeDashArray}
-                    stroke="blue"
                   ></circle>
                 </svg>
               </div>

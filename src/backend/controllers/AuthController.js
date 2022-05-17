@@ -29,7 +29,6 @@ export const signupHandler = function (schema, request) {
       );
     }
     const _id = uuid();
-
     const newUser = {
       _id,
       createdAt: formatDate(),

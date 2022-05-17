@@ -1,7 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getAllPosts } from "../helpers/getFunctions";
 import { toast } from "react-toastify";
-import { bookmarkPost, dislikePost, likePost, removeBookmarkPost } from "../helpers/postFunctions";
+import {
+  addComment,
+  bookmarkPost,
+  dislikePost,
+  likePost,
+  removeBookmarkPost,
+} from "../helpers/postFunctions";
 import { authActions } from "./auth-slice";
 
 const initialState = { allPosts: [] };
@@ -11,7 +17,12 @@ export const postSlice = createSlice({
   initialState,
   reducers: {
     updateAllPosts(state, action) {
-      state.allPosts = action.payload;
+      state.allPosts = action.payload.reverse();
+    },
+    updateComments(state, action) {
+      state.allPosts.find(
+        (post) => post._id === action.payload.postId
+      ).comments = action.payload.comments.reverse();
     },
   },
 });
@@ -129,6 +140,35 @@ export const bookmarkPosts = (postId, token) => {
       const data = await bookmarkPost(postId, token);
       dispatch(authActions.bookmark(data.bookmarks));
       toast.success("Bookmark Added!", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+      });
+    } catch (err) {
+      console.log(err);
+      toast.error(err.response.data.errors[0], {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  };
+};
+
+export const postComment = (postId, token, comment) => {
+  return async (dispatch) => {
+    try {
+      const data = await addComment(postId, token, comment);
+      dispatch(postActions.updateComments({ postId, comments: data.comments }));
+      toast.success("Comment Added!", {
         position: "top-right",
         autoClose: 2000,
         hideProgressBar: false,

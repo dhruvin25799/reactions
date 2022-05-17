@@ -1,13 +1,8 @@
 import React from "react";
 import styles from "./Post.module.css";
-import { AvatarIcon, Button } from "../index";
+import { AvatarIcon } from "../index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faThumbsUp,
-  faThumbsDown,
-  faFloppyDisk,
-  faCommentDots,
-} from "@fortawesome/free-regular-svg-icons";
+import { faThumbsUp, faFloppyDisk } from "@fortawesome/free-regular-svg-icons";
 import {
   faThumbsUp as faThumbsUpSolid,
   faFloppyDisk as faFloppyDiskSolid,
@@ -21,6 +16,7 @@ import {
   bookmarkPosts,
   removeBookmarkPosts,
 } from "../../store/post-slice";
+import { CommentsList } from "../CommentsList/CommentsList";
 
 export const Post = ({ data }) => {
   const username = useSelector((state) => state.auth.userData.username);
@@ -77,7 +73,7 @@ export const Post = ({ data }) => {
           )}
         </div>
         <div className={styles["post-footer"]}>
-          {data.likes.likeCount > 2 && (
+          {data.likes.likeCount >= 2 && (
             <p>
               Liked by{" "}
               <Link to={"/profile/" + data.likes.likedBy[0].username}>
@@ -100,26 +96,7 @@ export const Post = ({ data }) => {
           <Link to={"/profile/" + data.username}>{data.username}</Link>
           <p>{data.caption}</p>
         </div>
-        <div className={styles["post-comments"]}>
-          {data.comments.length > 2 && (
-            <Link to={"/posts/" + data._id}>
-              View all {data.comments.length} comments
-            </Link>
-          )}
-          {data.comments.slice(0, 2).map((comment) => (
-            <div className={styles["comment"]} key={comment._id}>
-              <p>{comment.username}</p>
-              <p>{comment.text}</p>
-            </div>
-          ))}
-        </div>
-        <div className={styles["comment-input"]}>
-          <form>
-            <FontAwesomeIcon icon={faCommentDots} size="lg" />
-            <input type="text" maxLength="30" placeholder="Add a comment..." required/>
-            <Button>Post</Button>
-          </form>
-        </div>
+        <CommentsList data={data} />
       </article>
     </>
   );

@@ -11,7 +11,7 @@ export const signUpAPICall = async (signUpInputState) => {
   const response = await axios.post("/api/auth/signup", {
     username: signUpInputState.email,
     password: signUpInputState.password,
-    fistName: signUpInputState.fistName,
+    firstName: signUpInputState.firstName,
     lastName: signUpInputState.lastName,
   });
   return response.data;
