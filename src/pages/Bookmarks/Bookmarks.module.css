@@ -1,0 +1,24 @@
+.bookmarks-main {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  padding: 2rem 0;
+  gap: 1rem;
+  align-items: center;
+}
+
+.bookmarks-main h4{
+    margin-left: 4rem;
+}
+
+.bookmarks-header {
+  padding: 0 4rem;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.bookmarks {
+  width: 60%;
+}

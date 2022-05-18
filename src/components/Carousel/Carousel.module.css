@@ -13,7 +13,11 @@
   flex-flow: row;
   gap: 1.5rem;
   padding: 2rem 1rem;
-  justify-content: center;
+}
+
+.carousel-row a{
+  text-decoration: none;
+  color: var(--COLOR-text);
 }
 
 .carousel-row::-webkit-scrollbar {

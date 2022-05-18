@@ -79,3 +79,29 @@ export const addComment = async (postId, token, comment) => {
   );
   return response.data;
 };
+
+export const followUser = async (userId, token) => {
+  const response = await axios.post(
+    "/api/users/follow/" + userId,
+    {},
+    {
+      headers: {
+        authorization: token,
+      },
+    }
+  );
+  return response.data;
+};
+
+export const unfollowUser = async (userId, token) => {
+  const response = await axios.post(
+    "/api/users/unfollow/" + userId,
+    {},
+    {
+      headers: {
+        authorization: token,
+      },
+    }
+  );
+  return response.data;
+};

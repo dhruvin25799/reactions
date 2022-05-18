@@ -9,7 +9,11 @@ import {
   LoadingSpinner,
 } from "../../components/index";
 import { useDispatch } from "react-redux";
-import { getProfileDetails } from "../../store/profile-slice";
+import {
+  followUsers,
+  getProfileDetails,
+  unfollowUsers,
+} from "../../store/profile-slice";
 
 export const Profile = () => {
   const { userID } = useParams();
@@ -18,7 +22,10 @@ export const Profile = () => {
   const posts = allPosts.filter((post) => post.username === userID);
   const userData = useSelector((state) => state.profile.profile);
   const username = useSelector((state) => state.auth.userData.username);
+  const token = useSelector((state) => state.auth.token);
   const isSelf = userID === username;
+  const following = useSelector((state) => state.auth.userData.following);
+  const isFollowing = following.find((user) => user.username === userID);
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     (async () => {
@@ -46,7 +53,21 @@ export const Profile = () => {
                     <h1>
                       {userData.firstName} {userData.lastName}
                     </h1>
-                    {isSelf && <Button>Edit Profile</Button>}
+                    {isSelf ? (
+                      <Button>Edit Profile</Button>
+                    ) : isFollowing ? (
+                      <Button
+                        onClick={() => dispatch(unfollowUsers(userID, token))}
+                      >
+                        Unfollow
+                      </Button>
+                    ) : (
+                      <Button
+                        onClick={() => dispatch(followUsers(userID, token))}
+                      >
+                        Follow
+                      </Button>
+                    )}
                   </div>
                   <h3>@{userData.username}</h3>
                   <h5>Some bio</h5>

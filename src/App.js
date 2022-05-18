@@ -1,6 +1,6 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import { Home, Login, SignUp, Profile } from "./pages/index";
+import { Home, Login, SignUp, Profile, Bookmarks } from "./pages/index";
 import { NavBar, PostModal, RequiresAuth } from "./components/index";
 import { useSelector } from "react-redux";
 import { ToastContainer } from "react-toastify";
@@ -33,6 +33,7 @@ function App() {
                 </RequiresAuth>
               }
             />
+            <Route path="/bookmarks" element={<RequiresAuth><Bookmarks/></RequiresAuth>}/>
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
           </Routes>

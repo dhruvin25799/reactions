@@ -7,7 +7,11 @@ import {
   faSearch,
   faHome,
 } from "@fortawesome/free-solid-svg-icons";
-import { faUser, faSquarePlus } from "@fortawesome/free-regular-svg-icons";
+import {
+  faUser,
+  faSquarePlus,
+  faFloppyDisk,
+} from "@fortawesome/free-regular-svg-icons";
 import { faSquarePlus as faSqaurePlusSolid } from "@fortawesome/free-solid-svg-icons";
 import { Logo, Button } from "../index";
 import { useSelector, useDispatch } from "react-redux";
@@ -52,6 +56,11 @@ export const NavBar = () => {
                 <Button>Login</Button>
               </Link>
             )}
+          </li>
+          <li>
+            <NavLink to="/bookmarks">
+              <FontAwesomeIcon icon={faFloppyDisk} size="lg" />
+            </NavLink>
           </li>
           <li>
             <NavLink to={"/profile/" + username}>

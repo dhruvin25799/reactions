@@ -21,6 +21,9 @@ export const authSlice = createSlice({
     bookmark(state, action) {
       state.userData.bookmarks = action.payload;
     },
+    update(state, action){
+      state.userData = action.payload;
+    }
   },
 });
 
