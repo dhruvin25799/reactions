@@ -1,10 +1,15 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getSingleUser } from "../helpers/getFunctions";
 import { followUser, unfollowUser } from "../helpers/postFunctions";
 import { toast } from "react-toastify";
 import { authActions } from "./auth-slice";
 
-const initialState = { profile: {} };
+const initialState = { profile: {}, status: "idle" };
+
+export const getProfileDetailsThunk = createAsyncThunk(
+  "/profile/getUser",
+  (arg) => getSingleUser(arg)
+);
 
 export const profileSlice = createSlice({
   name: "profile",
@@ -14,18 +19,16 @@ export const profileSlice = createSlice({
       state.profile = action.payload;
     },
   },
+  extraReducers: {
+    [getProfileDetailsThunk.pending]: (state) => {
+      state.status = "loading";
+    },
+    [getProfileDetailsThunk.fulfilled]: (state, action) => {
+      state.profile = action.payload.user;
+      state.status = "success";
+    },
+  },
 });
-
-export const getProfileDetails = (username) => {
-  return async (dispatch) => {
-    try {
-      const data = await getSingleUser(username);
-      dispatch(profileActions.update(data.user));
-    } catch (err) {
-      console.log(err);
-    }
-  };
-};
 
 export const followUsers = (userId, token) => {
   return async (dispatch) => {

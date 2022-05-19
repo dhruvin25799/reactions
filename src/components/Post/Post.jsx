@@ -11,8 +11,8 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import {
-  dislikePosts,
-  likePosts,
+  dislikePostsThunk,
+  likePostsThunk,
   bookmarkPosts,
   removeBookmarkPosts,
 } from "../../store/post-slice";
@@ -46,7 +46,7 @@ export const Post = ({ data }) => {
           {isLiked ? (
             <FontAwesomeIcon
               icon={faThumbsUpSolid}
-              onClick={() => dispatch(dislikePosts(data._id, token))}
+              onClick={() => dispatch(dislikePostsThunk({postId: data._id, token}))}
               size="lg"
               className={styles["colored"]}
             />
@@ -54,7 +54,7 @@ export const Post = ({ data }) => {
             <FontAwesomeIcon
               icon={faThumbsUp}
               size="lg"
-              onClick={() => dispatch(likePosts(data._id, token))}
+              onClick={() => dispatch(likePostsThunk({postId: data._id, token}))}
             />
           )}
           {isBookmarked ? (

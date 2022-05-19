@@ -15,7 +15,7 @@ export const getUserPosts = async (username) => {
   return response.data;
 };
 
-export const getSingleUser = async (username) => {
-  const response = await axios.get("/api/users/"+ username);
+export const getSingleUser = async (arg) => {
+  const response = await axios.get("/api/users/"+ arg.userID);
   return response.data;
 };

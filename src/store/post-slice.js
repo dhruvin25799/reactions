@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getAllPosts } from "../helpers/getFunctions";
 import { toast } from "react-toastify";
 import {
@@ -10,7 +10,18 @@ import {
 } from "../helpers/postFunctions";
 import { authActions } from "./auth-slice";
 
-const initialState = { allPosts: [] };
+const initialState = { allPosts: [], status: "idle" };
+export const getAllPostsThunk = createAsyncThunk(
+  "/posts/getPosts",
+  getAllPosts
+);
+export const likePostsThunk = createAsyncThunk("/posts/likePost", (arg) =>
+  likePost(arg)
+);
+
+export const dislikePostsThunk = createAsyncThunk("/posts/dislike", (arg) =>
+  dislikePost(arg)
+);
 
 export const postSlice = createSlice({
   name: "posts",
@@ -25,85 +36,25 @@ export const postSlice = createSlice({
       ).comments = action.payload.comments.reverse();
     },
   },
+  extraReducers: {
+    [getAllPostsThunk.pending]: (state) => {
+      state.status = "loading";
+    },
+    [getAllPostsThunk.fulfilled]: (state, action) => {
+      state.status = "success";
+      state.allPosts = action.payload.posts;
+    },
+    [getAllPostsThunk.rejected]: (state) => {
+      state.status = "failed";
+    },
+    [likePostsThunk.fulfilled]: (state, action) => {
+      state.allPosts = action.payload.posts;
+    },
+    [dislikePostsThunk.fulfilled]: (state, action) => {
+      state.allPosts = action.payload.posts;
+    },
+  },
 });
-
-export const getPosts = () => {
-  return async (dispatch) => {
-    try {
-      const data = await getAllPosts();
-      dispatch(postActions.updateAllPosts(data.posts));
-    } catch (err) {
-      console.log(err);
-      toast.error(err.response.data.errors[0], {
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
-      });
-    }
-  };
-};
-
-export const likePosts = (postId, token) => {
-  return async (dispatch) => {
-    try {
-      const data = await likePost(postId, token);
-      dispatch(postActions.updateAllPosts(data.posts));
-      toast.success("Post Liked!", {
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
-      });
-    } catch (err) {
-      console.log(err);
-      toast.error(err.response.data.errors[0], {
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
-      });
-    }
-  };
-};
-
-export const dislikePosts = (postId, token) => {
-  return async (dispatch) => {
-    try {
-      const data = await dislikePost(postId, token);
-      dispatch(postActions.updateAllPosts(data.posts));
-      toast.success("Like removed!", {
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
-      });
-    } catch (err) {
-      console.log(err);
-      toast.error(err.response.data.errors[0], {
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
-      });
-    }
-  };
-};
 
 export const removeBookmarkPosts = (postId, token) => {
   return async (dispatch) => {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./Profile.module.css";
 import { useSelector } from "react-redux";
@@ -11,7 +11,7 @@ import {
 import { useDispatch } from "react-redux";
 import {
   followUsers,
-  getProfileDetails,
+  getProfileDetailsThunk,
   unfollowUsers,
 } from "../../store/profile-slice";
 
@@ -26,22 +26,19 @@ export const Profile = () => {
   const isSelf = userID === username;
   const following = useSelector((state) => state.auth.userData.following);
   const isFollowing = following.find((user) => user.username === userID);
-  const [isLoading, setIsLoading] = useState(true);
+  const status = useSelector((state) => state.profile.status);
   useEffect(() => {
-    (async () => {
-      await dispatch(getProfileDetails(userID));
-      setIsLoading(false);
-    })();
+    dispatch(getProfileDetailsThunk({ userID }));
   }, [dispatch, userID]);
   return (
     <>
       <main
         className={`${styles["profile-main"]} ${
-          isLoading && styles["centered"]
+          status === "loading" && styles["centered"]
         }`}
       >
-        {isLoading && <LoadingSpinner />}
-        {!isLoading && (
+        {status === "loading" && <LoadingSpinner />}
+        {status === "success" && (
           <>
             <section className={styles["profile-header"]}>
               <div className={styles["profile-info"]}>
@@ -73,8 +70,8 @@ export const Profile = () => {
                   <h5>Some bio</h5>
                   <div className={styles["profile-stats"]}>
                     <p>{posts.length} Posts</p>
-                    <p>{!isLoading && userData.following.length} Following</p>
-                    <p>{!isLoading && userData.followers.length} Followers</p>
+                    <p>{userData.following.length} Following</p>
+                    <p>{userData.followers.length} Followers</p>
                   </div>
                 </div>
               </div>

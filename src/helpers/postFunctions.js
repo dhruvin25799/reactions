@@ -1,25 +1,25 @@
 import axios from "axios";
 
-export const likePost = async (postId, token) => {
+export const likePost = async (arg) => {
   const response = await axios.post(
-    "/api/posts/like/" + postId,
+    "/api/posts/like/" + arg.postId,
     {},
     {
       headers: {
-        authorization: token,
+        authorization: arg.token,
       },
     }
   );
   return response.data;
 };
 
-export const dislikePost = async (postId, token) => {
+export const dislikePost = async (arg) => {
   const response = await axios.post(
-    "/api/posts/dislike/" + postId,
+    "/api/posts/dislike/" + arg.postId,
     {},
     {
       headers: {
-        authorization: token,
+        authorization: arg.token,
       },
     }
   );
