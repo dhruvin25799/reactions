@@ -74,3 +74,10 @@
 .post-caption a{
   font-weight: 900;
 }
+
+@media (max-width: 480px) {
+  .post-caption{
+    flex-flow: column;
+    gap: 0;
+  }
+}

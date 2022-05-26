@@ -11,8 +11,12 @@ import {
   faUser,
   faSquarePlus,
   faFloppyDisk,
+  faSmileWink,
 } from "@fortawesome/free-regular-svg-icons";
-import { faSquarePlus as faSqaurePlusSolid } from "@fortawesome/free-solid-svg-icons";
+import {
+  faSquarePlus as faSqaurePlusSolid,
+  faSmileWink as faSmileWinkSolid,
+} from "@fortawesome/free-solid-svg-icons";
 import { Logo, Button } from "../index";
 import { useSelector, useDispatch } from "react-redux";
 import { themeActions } from "../../store/theme-slice";
@@ -30,6 +34,10 @@ export const NavBar = () => {
   const dispatch = useDispatch();
   const [query, setQuery] = useState("");
   const [searchOutput, setSearchOutput] = useState([]);
+  const [toggle, setToggle] = useState(false);
+  const handleNav = () => {
+    setToggle((prevValue) => !prevValue);
+  };
   const handleSearch = myDebounce((e) => {
     setQuery(e.target.value);
   }, 500);
@@ -46,11 +54,20 @@ export const NavBar = () => {
   }, [query]);
   return (
     <>
-      <nav className={styles["nav"]}>
+      <nav className={`${styles["nav"]} ${toggle && styles["display"]}`}>
         <div className={styles["nav-brand"]}>
           <Logo />
         </div>
-        <div className={styles["nav-search"]}>
+        <div className={styles["nav-hamburger"]}>
+          <FontAwesomeIcon
+            icon={!toggle ? faSmileWink : faSmileWinkSolid}
+            size="lg"
+            onClick={handleNav}
+          />
+        </div>
+        <div
+          className={`${styles["nav-search"]} ${toggle && styles["display"]}`}
+        >
           <div className={styles["search-input"]}>
             <label>
               <FontAwesomeIcon icon={faSearch} />
@@ -72,7 +89,7 @@ export const NavBar = () => {
             </div>
           )}
         </div>
-        <menu className={styles["nav-cta"]}>
+        <menu className={`${styles["nav-cta"]} ${toggle && styles["display"]}`}>
           <li>
             <FontAwesomeIcon
               icon={isDark ? faSun : faMoon}

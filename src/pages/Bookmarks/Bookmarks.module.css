@@ -22,3 +22,13 @@
 .bookmarks {
   width: 60%;
 }
+
+@media (max-width: 480px) {
+  .bookmarks-header{
+    padding: 0 1rem;
+  }
+  .bookmarks{
+    width: 100%;
+    padding: 0 1rem;
+  }
+}

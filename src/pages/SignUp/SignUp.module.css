@@ -68,3 +68,9 @@
   background: var(--COLOR-secondary-bg);
   padding: 0 10px;
 }
+
+@media (max-width: 480px) {
+  .signup-box{
+    width: 100%;
+  }
+}

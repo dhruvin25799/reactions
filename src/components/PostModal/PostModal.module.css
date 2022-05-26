@@ -104,3 +104,10 @@ circle {
 #colored {
   stroke: var(--COLOR-btn-primary-hover);
 }
+
+@media (max-width: 480px) {
+  .modal{
+    left: 0;
+    width: 100%;
+  }
+}

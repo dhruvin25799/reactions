@@ -54,3 +54,20 @@ hr {
   flex-flow: row;
   gap: 3rem;
 }
+
+@media (max-width: 480px) {
+  .profile-header{
+    margin: 0;
+  }
+  .profile-info{
+    gap: 1rem;
+    align-items: center;
+  }
+  .profile-posts{
+    padding: 0;
+  }
+  .profile-icon {
+    width: 75px;
+    height: 75px;
+  }
+}

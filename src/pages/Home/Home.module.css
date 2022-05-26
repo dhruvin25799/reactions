@@ -26,4 +26,14 @@
   position: relative;
 }
 
+@media (max-width: 480px) {
+  .home-content{
+    margin-left: 2rem;
+    width: 80%;
+  }
+  .home-profile{
+    display: none;
+  }
+}
+
 

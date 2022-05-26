@@ -35,3 +35,11 @@
   background-color: var(--COLOR-secondary-bg);
   color: var(--COLOR-text);
 }
+
+@media (max-width: 480px) {
+  .comment{
+    display: flex;
+    flex-flow: column;
+    gap: 0;
+  }
+}
