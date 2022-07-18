@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./Profile.module.css";
 import { useSelector } from "react-redux";
@@ -10,6 +10,7 @@ import {
 } from "../../components/index";
 import { useDispatch } from "react-redux";
 import {
+  editProfile,
   followUsers,
   getProfileDetailsThunk,
   unfollowUsers,
@@ -27,6 +28,36 @@ export const Profile = () => {
   const following = useSelector((state) => state.auth.userData.following);
   const isFollowing = following.find((user) => user.username === userID);
   const status = useSelector((state) => state.profile.status);
+  const [editForm, setEditForm] = useState(false);
+  const profileReducer = (state, action) => {
+    switch (action.type) {
+      case "FIRST_NAME": {
+        return { ...state, firstName: action.payload };
+      }
+      case "LAST_NAME": {
+        return { ...state, lastName: action.payload };
+      }
+      case "RESET": {
+        return initialProfileEditState;
+      }
+      default:
+        return state;
+    }
+  };
+  const initialProfileEditState = {
+    firstName: userData.firstName,
+    lastName: userData.lastName,
+  };
+  const [profileEditState, profileEditDispatch] = useReducer(
+    profileReducer,
+    initialProfileEditState
+  );
+  const profileEditHandler = () => {
+    dispatch(
+      editProfile({ token, user: { ...userData, ...profileEditState } })
+    );
+    setEditForm(false);
+  };
   useEffect(() => {
     dispatch(getProfileDetailsThunk({ userID }));
   }, [dispatch, userID]);
@@ -47,11 +78,53 @@ export const Profile = () => {
                 </div>
                 <div className={styles["profile-data"]}>
                   <div>
-                    <h1>
-                      {userData.firstName} {userData.lastName}
-                    </h1>
+                    {!editForm && (
+                      <h1>
+                        {userData.firstName} {userData.lastName}
+                      </h1>
+                    )}
+                    {editForm && (
+                      <div>
+                        <div className={styles["input-control"]}>
+                          <input
+                            type="text"
+                            value={profileEditState.firstName}
+                            onChange={(e) =>
+                              profileEditDispatch({
+                                type: "FIRST_NAME",
+                                payload: e.target.value,
+                              })
+                            }
+                          />
+                        </div>
+                        <div className={styles["input-control"]}>
+                          <input
+                            type="text"
+                            value={profileEditState.lastName}
+                            onChange={(e) =>
+                              profileEditDispatch({
+                                type: "LAST_NAME",
+                                payload: e.target.value,
+                              })
+                            }
+                          />
+                        </div>
+                      </div>
+                    )}
                     {isSelf ? (
-                      <Button>Edit Profile</Button>
+                      <>
+                        {editForm && (
+                          <Button onClick={profileEditHandler}>Save</Button>
+                        )}
+                        <Button
+                          onClick={() => {
+                            profileEditDispatch({ type: "RESET" });
+                            setEditForm(!editForm);
+                          }}
+                        >
+                          {editForm ? "Close" : "Edit Profile"}
+                        </Button>
+                      </>
                     ) : isFollowing ? (
                       <Button
                         onClick={() => dispatch(unfollowUsers(userID, token))}
@@ -67,7 +140,6 @@ export const Profile = () => {
                     )}
                   </div>
                   <h3>@{userData.username}</h3>
-                  <h5>Some bio</h5>
                   <div className={styles["profile-stats"]}>
                     <p>{posts.length} Posts</p>
                     <p>{userData.following.length} Following</p>

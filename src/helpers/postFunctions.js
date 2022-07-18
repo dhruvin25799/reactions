@@ -105,3 +105,31 @@ export const unfollowUser = async (userId, token) => {
   );
   return response.data;
 };
+
+export const editPost = async (arg) => {
+  const response = await axios.post(
+    "/api/posts/edit/" + arg.postId,
+    { postData: arg.post },
+    {
+      headers: {
+        authorization: arg.token,
+      },
+    }
+  );
+  return response.data;
+};
+
+export const editUserProfile = async (arg) => {
+  const response = await axios.post(
+    "/api/users/edit",
+    {
+      userData: arg.user,
+    },
+    {
+      headers: {
+        authorization: arg.token,
+      },
+    }
+  );
+  return response.data;
+};

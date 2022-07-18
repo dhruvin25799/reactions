@@ -55,6 +55,20 @@ hr {
   gap: 3rem;
 }
 
+.input-control {
+  display: flex;
+  flex-flow: column;
+}
+
+.input-control input {
+  border: 1px solid var(--COLOR-border);
+  outline: none;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: var(--COLOR-bg);
+  color: var(--COLOR-text);
+}
+
 @media (max-width: 480px) {
   .profile-header{
     margin: 0;

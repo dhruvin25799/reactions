@@ -118,7 +118,7 @@ export const NavBar = () => {
               <FontAwesomeIcon icon={faUser} size="lg" />
             </NavLink>
           </li>
-          <li onClick={() => dispatch(modalActions.toggle())}>
+          <li onClick={() => isLoggedIn && dispatch(modalActions.toggle())}>
             <FontAwesomeIcon
               icon={showModal ? faSqaurePlusSolid : faSquarePlus}
               size="lg"

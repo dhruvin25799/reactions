@@ -5,10 +5,12 @@ import {
   addComment,
   bookmarkPost,
   dislikePost,
+  editPost,
   likePost,
   removeBookmarkPost,
 } from "../helpers/postFunctions";
 import { authActions } from "./auth-slice";
+import { deletePost } from "../helpers/deleteFunctions";
 
 const initialState = { allPosts: [], status: "idle" };
 export const getAllPostsThunk = createAsyncThunk(
@@ -21,6 +23,14 @@ export const likePostsThunk = createAsyncThunk("/posts/likePost", (arg) =>
 
 export const dislikePostsThunk = createAsyncThunk("/posts/dislike", (arg) =>
   dislikePost(arg)
+);
+
+export const deletePostsThunk = createAsyncThunk("/posts/delete", (arg) =>
+  deletePost(arg)
+);
+
+export const editPostsThunk = createAsyncThunk("/posts/edit", (arg) =>
+  editPost(arg)
 );
 
 export const postSlice = createSlice({
@@ -51,6 +61,12 @@ export const postSlice = createSlice({
       state.allPosts = action.payload.posts;
     },
     [dislikePostsThunk.fulfilled]: (state, action) => {
+      state.allPosts = action.payload.posts;
+    },
+    [deletePostsThunk.fulfilled]: (state, action) => {
+      state.allPosts = action.payload.posts;
+    },
+    [editPostsThunk.fulfilled]: (state, action) => {
       state.allPosts = action.payload.posts;
     },
   },

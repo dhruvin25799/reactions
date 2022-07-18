@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getSingleUser } from "../helpers/getFunctions";
-import { followUser, unfollowUser } from "../helpers/postFunctions";
+import { editUserProfile, followUser, unfollowUser } from "../helpers/postFunctions";
 import { toast } from "react-toastify";
 import { authActions } from "./auth-slice";
 
@@ -77,7 +77,6 @@ export const unfollowUsers = (userId, token) => {
         progress: undefined,
       });
     } catch (err) {
-      console.log(err);
       toast.error(err.response.data.errors[0], {
         position: "top-right",
         autoClose: 2000,
@@ -90,5 +89,34 @@ export const unfollowUsers = (userId, token) => {
     }
   };
 };
+
+export const editProfile = (arg) => {
+  return async(dispatch) => {
+    try{
+      const data = await editUserProfile(arg);
+      dispatch(profileActions.update(data.user));
+      dispatch(authActions.update(data.user));
+      toast.success("Profile Updated", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+      });
+    } catch(err){
+      toast.error(err.response.data.errors[0], {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  }
+}
 
 export const profileActions = profileSlice.actions;

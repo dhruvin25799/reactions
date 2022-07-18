@@ -1,13 +1,10 @@
 export const modalInputReducer = (state, action) => {
   switch (action.type) {
-    case "URL": {
-      return { ...state, url: action.payload };
-    }
-    case "CAPTION": {
+    case "POST_BODY": {
       const { colored, gray } = styleRing(action.payload.length);
       return {
         ...state,
-        caption: action.payload,
+        body: action.payload,
         charLength: action.payload.length,
         strokeDashArray: `${colored} ${gray}`,
       };
@@ -18,16 +15,15 @@ export const modalInputReducer = (state, action) => {
 };
 
 export const initialModalInputState = {
-  url: "",
-  caption: "",
+  body: "",
   charLength: 0,
   strokeDashArray: "",
 };
 
-const styleRing = (charLength) => {
+export const styleRing = (charLength) => {
   const r = 15;
   const circleLength = 2 * Math.PI * r;
-  let colored = (circleLength * charLength) / 50;
+  let colored = (circleLength * charLength) / 200;
   let gray = circleLength - colored > 0 ? circleLength - colored : 0;
   return { colored, gray };
 };

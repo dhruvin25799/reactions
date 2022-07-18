@@ -34,8 +34,7 @@ export const PostModal = () => {
     dispatch(
       sendPost(
         {
-          content: modalInputState.url,
-          caption: modalInputState.caption,
+          content: modalInputState.body,
         },
         token
       )
@@ -58,31 +57,19 @@ export const PostModal = () => {
             </div>
             <hr />
             <form className={styles["modal-form"]} onSubmit={formSubmitHandler}>
-              <div className={styles["input-control"]}>
-                <label>Image/GIF Url : </label>
-                <input
-                  type="url"
-                  required
-                  onChange={(e) =>
-                    modalInputDispatch({ type: "URL", payload: e.target.value })
-                  }
-                  value={modalInputState.url}
-                  placeholder="Enter a valid URL"
-                />
-              </div>
               <div className={styles["input-control-textarea"]}>
-                <label>Caption : </label>
+                <label>Post Body : </label>
                 <textarea
-                  maxLength="50"
-                  placeholder="Enter a caption"
+                  maxLength="200"
+                  placeholder="Enter post body"
                   required
                   onChange={(e) =>
                     modalInputDispatch({
-                      type: "CAPTION",
+                      type: "POST_BODY",
                       payload: e.target.value,
                     })
                   }
-                  value={modalInputState.caption}
+                  value={modalInputState.body}
                   rows="5"
                 />
                 <svg className={styles["char-count"]}>
