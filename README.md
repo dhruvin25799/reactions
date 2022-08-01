@@ -1,70 +1,70 @@
-# Getting Started with Create React App
+<h1 align="center"><b>REACTions</b></h1>
+<div align="center">REACTions is a React Social Media app that lets you post your thoughts, add your friends and follow them.</div>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## **Live App**
+To view the website live in action visit
 
-### `yarn start`
+[Re-Habits](https://reactions-app.netlify.app/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
+![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+https://user-images.githubusercontent.com/47236093/182110969-9bc89b6a-6a42-4e3b-a66d-52f75470c722.mp4
 
-### `yarn build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## **Functionality** 
+* Authentication
+  * Sign Up
+  * Login
+  * Logout
+* Posts
+  * Add Post
+  * Edit Post
+  * Delete Post
+  * Like/Unlike Post
+  * Comment
+  * Bookmark
+* Profile
+  * Follow User
+  * Unfollow User
+  * Edit Profile
+* Sorting and Filtering
+  * Sort bookmarked posts by ascending or descending dates
+* Searching
+  * Search users by their names
+  * Search is debounced to reduce API calls.
+* Home
+  * List of all users in a banner
+  * All posts
+* Theme
+  * Dark Mode and light mode can be toggled from the icon on the navbar
+* 404
+* Responsiveness
+  * All pages/components are made responsive for mobile screens (Width < 480px)
 
-### `yarn eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## **Backend** 
+Backend for this app is a mock backend [MockBee](https://mockbee.netlify.app/).
+Refreshing the page will delete all data from the backend as the app restarts.
+The data will persist between multiple login/logout/signup sessions if not refreshed.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+---
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## **How to run this app**
+To run this app locally on your machine, clone the repo to your local machine.\
+In the project directory, you can run\
+`npm start`\
+This will start the app in development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.\
+Make sure you have access to internet to make use of the API call inside the App.
