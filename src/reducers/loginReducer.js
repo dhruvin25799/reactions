@@ -6,6 +6,9 @@ export const loginInputReducer = (state, action) => {
     case "PASSWORD": {
       return { ...state, password: action.payload };
     }
+    case "DUMMY": {
+      return { ...state, email: "test.user@gmail.com", password: "1234567890" };
+    }
     default:
       return state;
   }

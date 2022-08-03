@@ -75,6 +75,9 @@ export const Login = () => {
               />
             </div>
             <Button>Log In</Button>
+            <Button onClick={() => loginInputDispatch({ type: "DUMMY" })}>
+              Log In with a dummy account
+            </Button>
           </form>
           <h5 className={styles["centered-text"]}>
             <span>OR</span>
